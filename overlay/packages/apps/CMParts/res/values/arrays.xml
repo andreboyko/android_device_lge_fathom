@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="entries_dual_led_colors">
+        <item>@string/trackball_color_entry_use_app</item>
+        <item>@string/trackball_color_entry_green</item>
+        <item>@string/trackball_color_entry_red</item>
+    </string-array>
+
+</resources>
