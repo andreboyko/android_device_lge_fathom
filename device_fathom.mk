@@ -15,17 +15,17 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     lights.tsunagi \
-    e2fsck \
-    librs_jni \
-    SpareParts \
+    copybit.qsd8k \
+    gralloc.qsd8k \
     libOmxCore \
     libOmxVidEnc \
+    librs_jni \
+    e2fsck \
+    SpareParts \
     LiveWallpapers \
     LiveWallpapersPicker \
     MagicSmokeWallpapers \
     VisualizationWallpapers
-
-#  sensors.tsunagi
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
@@ -41,11 +41,15 @@ PRODUCT_MODEL := LG-VS750
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=fathom
 
-#Ramdisk images
+#ramdisk additions
 PRODUCT_COPY_FILES += \
     device/lge/fathom/prebuilt/init.tsunagi.rc:root/init.tsunagi.rc
 
-#media
+#audio fw
+PRODUCT_COPY_FILES += \
+    device/lge/fathom/proprietary/etc/firmware/htcleo.acdb:system/etc/firmware/htcleo.acdb
+
+#media profiles
 PRODUCT_COPY_FILES += \
     device/lge/fathom/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml
 
@@ -57,9 +61,13 @@ PRODUCT_COPY_FILES += \
     device/lge/fathom/proprietary/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
     device/lge/fathom/proprietary/lib/libgsl.so:system/lib/libgsl.so \
     device/lge/fathom/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/lge/fathom/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-    device/lge/fathom/proprietary/lib/hw/gralloc.qsd8k.so:system/lib/hw/gralloc.qsd8k.so \
-    device/lge/fathom/proprietary/lib/hw/copybit.qsd8k.so:system/lib/hw/copybit.qsd8k.so
+    device/lge/fathom/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
+
+# Keylayouts
+PRODUCT_COPY_FILES += \
+    device/lge/fathom/prebuilt/fathom-keypad.kl:system/usr/keylayout/kbd_pp2106.kl \
+    device/lge/fathom/prebuilt/fathom-keypad.kcm.bin:system/usr/keychars/kbd_pp2106.kcm.bin
+#    device/lge/fathom/files/7k_handset.kl:system/usr/keylayout/7k_handset.kl
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -68,15 +76,13 @@ PRODUCT_COPY_FILES += \
     device/lge/fathom/proprietary/etc/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
     device/lge/fathom/proprietary/etc/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin
 
-# Keylayouts
-PRODUCT_COPY_FILES += \
-    device/lge/fathom/prebuilt/fathom-keypad.kl:system/usr/keylayout/kbd_pp2106.kl \
-    device/lge/fathom/prebuilt/fathom-keypad.kcm.bin:system/usr/keychars/kbd_pp2106.kcm.bin
-#    device/lge/fathom/files/7k_handset.kl:system/usr/keylayout/7k_handset.kl
-
 #Bluetooth fw
 PRODUCT_COPY_FILES += \
     device/lge/fathom/proprietary/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd
+
+#RIL
+PRODUCT_COPY_FILES += \
+    device/lge/fathom/proprietary/lib/libhtc_ril.so:system/etc/lib/libhtc_ril.so
 
 # Device permissions
 PRODUCT_COPY_FILES += \
@@ -85,24 +91,26 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml
-
-#    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-#    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-#    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-#    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-#    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
 
 #properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
+    rild.libpath=/system/lib/libhtc_ril.so \
+    ro.ril.ecc.HTC-ELL=92,93,94 \
+    ro.ril.ecc.HTC-WWE=999 \
+    ro.ril.enable.a52.HTC-ITA=1 \
+    ro.ril.enable.a53.HTC-ITA=1 \
+    ro.ril.enable.a52=0 \
+    ro.ril.enable.a53=1 \
+    ro.ril.enable.dtm=1 \
+    ro.ril.gprsclass=12 \
+    ro.ril.hsdpa.category=8 \
+    ro.ril.hsupa.category=5 \
+    ro.ril.hsxpa=2 \
+    mobiledata.interfaces=rmnet0,rmnet1,rmnet2,ppp0 \
     wifi.interface=eth0 \
-    wifi.supplicant_scan_interval=5 \
-    ro.ril.def.agps.mode=2
-
-
-#    android.keychar.kbd_pp2106=/system/usr/keychars/kbd_pp2106.kcm.bin
-#    android.keylayout.kbd_pp2106=/system/usr/keylayout/kbd_pp2106.kl 
- 
+    wifi.supplicant_scan_interval=5 
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number

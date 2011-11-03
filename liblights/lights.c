@@ -85,7 +85,6 @@ write_int(char const* path, int value)
     if (fd >= 0) {
         char buffer[20];
         int bytes = sprintf(buffer, "%d\n", value);
-	//LOGE("write_int bytes: %d\n", bytes);
         int amt = write(fd, buffer, bytes);
         close(fd);
         return amt == -1 ? -errno : 0;
@@ -133,16 +132,12 @@ set_light_backlight(struct light_device_t* dev,
     switch(state->brightnessMode) {
         case BRIGHTNESS_MODE_SENSOR:
             als_mode = ALS_AUTOMATIC;
-	    //LOGE("setting BRIGHTNESS_MODE_SENSOR mode: %d\n", als_mode);
             break;
         case BRIGHTNESS_MODE_USER:
         default:
             als_mode = ALS_MANUAL;
-	    //LOGE("setting default mode: %d\n", als_mode);
             break;
     }
-    
-    LOGE("brightness %d, calculated new: %d\n", brightness, calculated);
     
     pthread_mutex_lock(&g_lock);
     err = write_int(ALS_FILE, als_mode);
