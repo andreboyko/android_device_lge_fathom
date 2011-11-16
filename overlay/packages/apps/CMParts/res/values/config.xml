@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<bool name="has_dual_notification_led">true</bool>
+    <!-- Whether or not to display the trackball settings -->
+    <bool name="has_trackball">false</bool>
+    
+    <!-- Notification LED can show green, blue, red only -->
+    <bool name="has_dual_notification_led">true</bool>
+    
+    <!--  Whether or not to display the slider settings -->
+    <bool name="has_slider">true</bool>
+    
+    <!-- Whether or not to display the camera button settings. Camera button is not working now in fathom -->
+    <bool name="has_camera_button">false</bool>
 </resources>

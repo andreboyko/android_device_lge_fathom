@@ -24,21 +24,28 @@
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
 
-    <!-- Our amoled doesn't animate well. -->
-    <!--<bool name="config_animateScreenLights">false</bool>-->
-
-    <!-- disable menu hard key on Bravo in non-pattern lockscreen -->
+    <!-- Vivow have hardware fade, disable soft fade -->
+    <bool name="config_animateScreenLights">false</bool>
+    
+    <!-- disable menu hard key on Fathom in non-pattern lockscreen -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
     
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
          specified -->
     <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
 
-    <!-- Default color for notification LED is white -->
-    <!--<color name="config_defaultNotificationColor">#ffffffff</color>-->
+    <!-- Component name of the service providing network location support. -->
+    <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
+
+    <!-- Component name of the service providing geocoder API support. -->
+    <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string>
+
+
+    <!-- Default color for notification LED is green -->
+    <color name="config_defaultNotificationColor">#ff00ff00</color>
 
     <!-- Default blink frequency for notification LED is 9 seconds. -->
-    <!--<integer name="config_defaultNotificationLedOff">9000</integer>-->
+    <integer name="config_defaultNotificationLedOff">9000</integer>
 
     <!-- Component name of the service providing network location support. -->
     <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
@@ -55,14 +62,14 @@
          based on the hardware -->
     <!-- An Array of "[Connection name],[ConnectivityManager connection type],
          [associated radio-type],[priority]  -->
-    <!--<string-array translatable="false" name="networkAttributes">
+    <string-array translatable="false" name="networkAttributes">
         <item>"wifi,1,1,1"</item>
         <item>"mobile,0,0,0"</item>
         <item>"mobile_mms,2,0,2"</item>
         <item>"mobile_supl,3,0,2"</item>
         <item>"mobile_dun,4,0,4"</item>
         <item>"mobile_hipri,5,0,3"</item>
-      </string-array>-->
+    </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
@@ -88,9 +95,10 @@
 
     <!-- Boolean indicating if we require the use of DUN on mobile for tethering -->
     <bool translatable="false" name="config_tether_dun_required">false</bool>
-
+    
+    
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
-    <!--<integer-array name="config_keyboardTapVibePattern">
+    <integer-array name="config_keyboardTapVibePattern">
         <item>30</item>
-      </integer-array>-->
+    </integer-array>
 </resources>
