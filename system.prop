@@ -1,0 +1,34 @@
+#
+# system.prop for fathom
+#
+ro.sf.lcd_density=240
+
+rild.libpath=/system/lib/libhtc_ril.so
+
+
+# world phone feature enabled
+ro.ril.wp.feature=1
+
+ro.ril.ecc.HTC-ELL=92,93,94
+ro.ril.ecc.HTC-WWE=999
+ro.ril.enable.a52.HTC-ITA=1
+ro.ril.enable.a53.HTC-ITA=1
+ro.ril.oem.ecclist=112,911
+ro.ril.enable.a52=0
+ro.ril.enable.a53=1
+ro.ril.enable.dtm=1
+ro.ril.gprsclass=12
+ro.ril.hsdpa.category=8
+ro.ril.hsupa.category=5
+ro.ril.hsxpa=2
+mobiledata.interfaces=rmnet0,rmnet1,rmnet2,ppp0
+
+wifi.interface=eth0
+wifi.supplicant_scan_interval=15
+
+# The OpenGL ES API level that is natively supported by this device.
+# This is a 16.16 fixed point number
+ro.opengles.version=131072
+
+# This is a high density device with more memory, so larger vm heaps for it.
+dalvik.vm.heapsize=24m
