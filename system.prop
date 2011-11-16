@@ -32,3 +32,6 @@ ro.opengles.version=131072
 
 # This is a high density device with more memory, so larger vm heaps for it.
 dalvik.vm.heapsize=24m
+
+# Keyboard with id 0 - kbd_pp2106
+hw.keyboards.0.devname=kbd_pp2106
