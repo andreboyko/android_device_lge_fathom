@@ -139,9 +139,23 @@ set_light_backlight(struct light_device_t* dev,
             break;
     }
     
+    LOGE("ALS_MODE %d, new_bright %d \n", als_mode, calculated);
     pthread_mutex_lock(&g_lock);
     err = write_int(ALS_FILE, als_mode);
     err = write_int(LCD_FILE, calculated);
+    pthread_mutex_unlock(&g_lock);
+    return err;
+}
+
+static int
+set_light_keyboard(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    int err = 0;
+    int on = is_lit(state);
+    LOGE("light keyboard called\n");
+    pthread_mutex_lock(&g_lock);
+    err = write_int(KEYBOARD_FILE, on?255:0);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
@@ -152,10 +166,9 @@ set_light_buttons(struct light_device_t* dev,
 {
     int err = 0;
     int on = is_lit(state);
-    pthread_mutex_lock(&g_lock);
     LOGE("light buttons called\n");
+    pthread_mutex_lock(&g_lock);
     err = write_int(BUTTON_FILE, on?255:0);
-    err = write_int(KEYBOARD_FILE, on?255:0);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
@@ -293,6 +306,9 @@ static int open_lights(const struct hw_module_t* module, char const* name,
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
         set_light = set_light_backlight;
     }
+    else if (0 == strcmp(LIGHT_ID_KEYBOARD, name)) {
+        set_light = set_light_keyboard;
+    }
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name)) {
         set_light = set_light_buttons;
     }
@@ -306,10 +322,7 @@ static int open_lights(const struct hw_module_t* module, char const* name,
         return -EINVAL;
     }
     
-    
-    //else if (0 == strcmp(LIGHT_ID_KEYBOARD, name)){
-//	set_light = set_light_buttons;
-//    }
+    //LIGHT_INDEX_ATTENTION = 5,
 
     struct light_device_t *dev = calloc(1, sizeof(struct light_device_t));
 

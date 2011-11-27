@@ -15,8 +15,8 @@ on boot
     chmod 0660                /sys/class/rfkill/rfkill0/state
 
     # bluetooth MAC address programming
-    chown bluetooth bluetooth /sys/module/board_tsunagi/parameters/bdaddress
-    setprop ro.bt.bdaddr_path /sys/module/board_tsunagi/parameters/bdaddress
+    chown bluetooth bluetooth /sys/module/board_fathom/parameters/bdaddress
+    setprop ro.bt.bdaddr_path /sys/module/board_fathom/parameters/bdaddress
 
     # Permissions for Liblights.
     chown system system /sys/class/leds/green/brightness
@@ -26,8 +26,8 @@ on boot
     chown system system /sys/class/leds/keyboard-backlight/brightness
     
     #write 0 to als for enable backlight control
-    write /sys/class/leds/lcd-backlight/alc 1
-    write /sys/class/leds/lcd-backlight/alc 0
+    #write /sys/class/leds/lcd-backlight/alc 1
+    #write /sys/class/leds/lcd-backlight/alc 0
     
     chown system system /sys/class/leds/lcd-backlight/alc
     chown system system /sys/class/backlight/bd6084gu-bl/brightness

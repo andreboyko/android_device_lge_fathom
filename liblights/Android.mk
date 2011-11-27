@@ -18,7 +18,7 @@ ifeq ($(TARGET_DEVICE),fathom)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := lights.tsunagi
+LOCAL_MODULE := lights.fathom
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 

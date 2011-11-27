@@ -13,15 +13,16 @@ DISABLE_DEXPREOPT := false
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
+#Hardware libs
 PRODUCT_PACKAGES += \
-    lights.tsunagi \
+    lights.fathom \
     copybit.qsd8k \
-    gralloc.qsd8k \
-    libOmxCore \
-    libOmxVidEnc \
-    librs_jni \
-    e2fsck \
-    SpareParts \
+    gralloc.qsd8k
+
+#gps.fathom
+
+#LiveWallpapers support
+PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     MagicSmokeWallpapers \
@@ -31,7 +32,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
+#Codecs
+#PRODUCT_PACKAGES += \
+#    libmm-omxcore \
+#    libOmxCore \
+#    libOmxVidEnc
+
+#Needed libs
+PRODUCT_PACKAGES += \
+    librs_jni \
+    e2fsck \
+    SpareParts
+
+#gps
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
+PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_fathom
