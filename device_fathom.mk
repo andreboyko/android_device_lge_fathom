@@ -58,7 +58,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=fathom
 
 #ramdisk additions
 PRODUCT_COPY_FILES += \
-    device/lge/fathom/prebuilt/init.tsunagi.rc:root/init.tsunagi.rc
+    device/lge/fathom/prebuilt/init.fathom.rc:root/init.fathom.rc
 
 #audio fw
 PRODUCT_COPY_FILES += \
@@ -97,7 +97,7 @@ PRODUCT_COPY_FILES += \
 
 #RIL
 PRODUCT_COPY_FILES += \
-    device/lge/fathom/proprietary/lib/libhtc_ril.so:system/etc/lib/libhtc_ril.so
+    device/lge/fathom/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so
 
 # Device permissions
 PRODUCT_COPY_FILES += \
