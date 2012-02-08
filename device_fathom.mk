@@ -19,7 +19,16 @@ PRODUCT_PACKAGES += \
     copybit.qsd8k \
     gralloc.qsd8k
 
-#gps.fathom
+#Codecs
+#PRODUCT_PACKAGES += \
+#    libOmxCore \
+#    libOmxVidEnc
+
+#Needed libs
+PRODUCT_PACKAGES += \
+    librs_jni \
+    e2fsck \
+    SpareParts
 
 #LiveWallpapers support
 PRODUCT_PACKAGES += \
@@ -32,17 +41,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
-#Codecs
-#PRODUCT_PACKAGES += \
-#    libmm-omxcore \
-#    libOmxCore \
-#    libOmxVidEnc
-
-#Needed libs
-PRODUCT_PACKAGES += \
-    librs_jni \
-    e2fsck \
-    SpareParts
 
 #gps
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
@@ -67,6 +65,12 @@ PRODUCT_COPY_FILES += \
 #media profiles
 PRODUCT_COPY_FILES += \
     device/lge/fathom/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml
+
+#Codecs
+PRODUCT_COPY_FILES += \
+    device/lge/fathom/proptietary/lib/libOmxCore.so:system/lib/libOmxCore.so \
+    device/lge/fathom/proptietary/lib/libOmxVdec.so:system/lib/libOmxVdec.so \
+    device/lge/fathom/proptietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
 
 # 3D +
 PRODUCT_COPY_FILES += \
@@ -105,8 +109,10 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
+    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
 #properties
 
