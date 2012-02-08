@@ -37,11 +37,6 @@ PRODUCT_PACKAGES += \
     MagicSmokeWallpapers \
     VisualizationWallpapers
 
-# Publish that we support the live wallpaper feature.
-PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
-
-
 #gps
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
@@ -53,6 +48,11 @@ PRODUCT_DEVICE := fathom
 PRODUCT_MODEL := LG-VS750
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=fathom
+
+#sensors lib
+PRODUCT_COPY_FILES += \
+    device/lge/fathom/prebuilt/lib/hw/sensors.fathom.so:system/lib/hw/sensors.fathom.so
+
 
 #ramdisk additions
 PRODUCT_COPY_FILES += \
@@ -101,7 +101,9 @@ PRODUCT_COPY_FILES += \
 
 #RIL
 PRODUCT_COPY_FILES += \
-    device/lge/fathom/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so
+    device/lge/fathom/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
+    device/lge/fathom/prebuilt/bin/ppp:system/bin/ppp \
+    device/lge/fathom/prebuilt/lib/libhtc_ril_wrapper.so:system/lib/libhtc_ril_wrapper.so
 
 # Device permissions
 PRODUCT_COPY_FILES += \
@@ -112,8 +114,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 #properties
-
 PRODUCT_LOCALES := hdpi

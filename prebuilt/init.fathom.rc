@@ -28,7 +28,9 @@ on boot
     #write 0 to als for enable backlight control
     #write /sys/class/leds/lcd-backlight/alc 1
     #write /sys/class/leds/lcd-backlight/alc 0
-    
+
+    write /sys/class/input/input4/enable 1
+
     chown system system /sys/class/leds/lcd-backlight/alc
     chown system system /sys/class/backlight/bd6084gu-bl/brightness
     
