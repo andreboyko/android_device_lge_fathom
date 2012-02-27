@@ -1,0 +1,1 @@
+/bin/echo -e "ATD*99#\r" > /dev/smd1

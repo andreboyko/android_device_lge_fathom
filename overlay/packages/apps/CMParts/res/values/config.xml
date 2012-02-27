@@ -9,6 +9,9 @@
     <!--  Whether or not to display the slider settings -->
     <bool name="has_slider">true</bool>
     
-    <!-- Whether or not to display the camera button settings. Camera button is not working now in fathom -->
-    <bool name="has_camera_button">false</bool>
+    <!-- Whether or not to display the camera button settings. -->
+    <bool name="has_camera_button">true</bool>
+    
+    <!-- taskmgr button will be search button -->
+    <bool name="has_search_button">false</bool>
 </resources>

@@ -24,7 +24,7 @@
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
 
-    <!-- Vivow have hardware fade, disable soft fade -->
+    <!-- Fathom have hardware fade, disable soft fade. Needed for use power animations -->
     <bool name="config_animateScreenLights">false</bool>
     
     <!-- disable menu hard key on Fathom in non-pattern lockscreen -->
@@ -82,6 +82,7 @@
          tethering on a new interface called "foo2" add <item>"foo\\d"</item> to the array -->
     <string-array translatable="false" name="config_tether_upstream_regexs">
         <item>"rmnet\\d"</item>
+        <item>"ppp\\d"</item>
         <item>"eth\\d"</item>
     </string-array>
 
@@ -96,12 +97,18 @@
     <!-- Boolean indicating if we require the use of DUN on mobile for tethering -->
     <bool translatable="false" name="config_tether_dun_required">false</bool>
     
+    <!-- Flag indicating whether the surface flinger has limited
+         alpha compositing functionality in hardware.  If set, the window
+         manager will disable alpha trasformation in animations where not
+         strictly needed. -->
+    <bool name="config_sf_limitedAlpha">true</bool>
+
     
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
         <item>30</item>
     </integer-array>
-    
+        
     <!-- The orientation in which case volume buttins should be swapped.
          See ROTATION_0, ROTATION_90, ROTATION_180, ROTATION_270 in android.view.Surface
          for more details about values -->
